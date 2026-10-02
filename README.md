@@ -120,6 +120,7 @@ A Java-based inventory management application for managing products, stock infor
 JavaFullStack-Mini-Projects/
 │
 ├── CampusLostFoundInteractive/
+│   ├── data
 │   ├── src/
 │   ├── pom.xml
 │   └── README.md
