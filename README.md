@@ -99,6 +99,42 @@ A Java-based inventory management application for managing products, stock infor
 
 ---
 
+### 4. MultiThreaded Sales Analytics Processor
+
+A Java-based application that processes multiple CSV sales files concurrently and generates consolidated sales analytics.
+
+**Features:**
+- Concurrent processing of multiple CSV files
+- Automatic thread-pool configuration
+- Sales record validation
+- Invalid record tracking
+- Total sales and revenue calculation
+- Product-wise sales analysis
+- Category-wise revenue analysis
+- Top-selling product identification
+- Top 3 product analysis
+- Processing-time measurement
+- Consolidated text report generation
+- CSV analytics export
+- Graceful thread-pool management
+
+**Technologies & Concepts:**
+- Java
+- Object-Oriented Programming
+- Multithreading
+- ExecutorService
+- Callable
+- Future
+- Collections
+- File I/O
+- CSV Processing
+- Exception Handling
+- Builder Design Pattern
+
+**Project Folder:** `MultiThreaded_Sales_Analytics_Processor`
+
+---
+
 ## Technologies Used
 
 | Technology | Usage |
@@ -109,7 +145,9 @@ A Java-based inventory management application for managing products, stock infor
 | JUnit | Unit testing |
 | Collections | Data management |
 | File I/O | File operations |
+| CSV Processing | Data processing and analytics |
 | Multithreading | Concurrent processing |
+| ExecutorService | Thread management |
 | Spring IoC | Dependency Injection |
 
 ---
@@ -120,7 +158,7 @@ A Java-based inventory management application for managing products, stock infor
 JavaFullStack-Mini-Projects/
 │
 ├── CampusLostFoundInteractive/
-│   ├── data
+│   ├── data/
 │   ├── src/
 │   ├── pom.xml
 │   └── README.md
@@ -135,6 +173,12 @@ JavaFullStack-Mini-Projects/
 │   ├── pom.xml
 │   └── README.md
 │
+├── MultiThreaded_Sales_Analytics_Processor/
+│   ├── data/
+│   ├── src/
+│   ├── README.md
+│   └── run.bat
+│
 └── README.md
 ```
 
@@ -144,7 +188,9 @@ JavaFullStack-Mini-Projects/
 
 This repository contains mini projects developed as part of the Java Full Stack course.
 
-Each project is maintained in a separate folder and demonstrates different Java programming, Object-Oriented Programming, software development and application-building concepts.
+Each project is maintained in a separate folder and demonstrates different Java programming, Object-Oriented Programming, software development, data processing and application-building concepts.
+
+The projects cover areas including desktop application development, inventory management, file processing, data analytics, testing, dependency injection and concurrent programming.
 
 ---
 
