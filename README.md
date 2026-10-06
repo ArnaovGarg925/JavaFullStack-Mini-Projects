@@ -7,7 +7,7 @@ A collection of Java-based mini projects developed as part of academic coursewor
 ## Student Details
 
 **Name:** Arnaov Garg  
-**Program:** B.Tech CSE Core  
+**Program:** B.Tech CSE Core D 
 **Registration No.:** RA2411003030227  
 **Institute:** SRM Institute of Science and Technology  
 
@@ -197,5 +197,5 @@ The projects cover areas including desktop application development, inventory ma
 ## Developer
 
 **Arnaov Garg**  
-B.Tech CSE Core  
+B.Tech CSE Core D 
 SRM Institute of Science and Technology
