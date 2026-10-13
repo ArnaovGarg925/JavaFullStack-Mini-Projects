@@ -1,109 +1,64 @@
-# Java Full Stack Mini Projects
+Java Full Stack Mini Projects
 
-A collection of Java-based mini projects developed as part of academic coursework for the Java Full Stack course at SRM Institute of Science and Technology.
+A collection of Java-based mini projects demonstrating practical software development skills, object-oriented programming, desktop application development, inventory management, and multithreaded data processing.
 
----
+Student Details
 
-## Student Details
+- Name: Arnaov Garg
+- Program: B.Tech — Computer Science and Engineering
+- Branch/Section: CSE Core D
+- Registration No.: RA2411003030227
+- Institute: SRM Institute of Science and Technology
 
-**Name:** Arnaov Garg  
-**Program:** B.Tech CSE Core  
-**Registration No.:** RA2411003030227  
-**Institute:** SRM Institute of Science and Technology  
+Projects
 
----
+1. Java OOP Calculator
 
-## Projects
+A desktop calculator application developed using Java Swing and object-oriented programming concepts. It supports basic arithmetic, advanced mathematical operations, memory functions, and calculation history.
 
-### 1. Campus Lost & Found
+Features
 
-A Java-based desktop application designed to manage lost and found items within a college campus.
+- Addition, subtraction, multiplication, and division
+- Modulus and power operations
+- Square and square root
+- Reciprocal calculation
+- Positive/negative toggle
+- Average calculation
+- Backspace and clear
+- Memory operations
+- Calculation history
+- Error handling
 
-**Technologies & Concepts:**
-- Java
-- Object-Oriented Programming
-- Java Swing
-- Spring IoC / Dependency Injection
-- Maven
-- JUnit
-- Collections
+Technologies: Java, Java Swing, Object-Oriented Programming, Maven
 
-**Project Folder:** `CampusLostFoundInteractive`
+Project Folder: "calculator-executable-jar"
 
----
+2. Inventory Management System
 
-### 2. Java OOP Calculator
+A Java-based application for managing products, categories, stock levels, discounts, and inventory reports.
 
-A desktop calculator application developed using Java Swing and Object-Oriented Programming concepts. The project provides basic and advanced mathematical operations along with memory and calculation history features.
+Features
 
-**Features:**
-- Addition, Subtraction, Multiplication and Division
-- Modulus
-- Power
-- Square
-- Square Root
-- Reciprocal
-- Positive / Negative
-- Average
-- Backspace and Clear
-- Memory Operations
-- Calculation History
-- Error Handling
+- Product management
+- Stock management
+- Product categories
+- Discount calculation
+- Inventory value calculation
+- Inventory reports
+- CSV report export
+- Exception handling
+- Multithreaded inventory processing
 
-**Technologies & Concepts:**
-- Java
-- Object-Oriented Programming
-- Java Swing
-- Interfaces
-- Encapsulation
-- Abstraction
-- Polymorphism
-- Method Overloading
-- Maven
+Technologies: Java, Object-Oriented Programming, Collections, Exception Handling, File I/O, Serialization, Multithreading, Maven
 
-**Project Folder:** `calculator-executable-jar`
+Project Folder: "inventory-management-system"
 
----
+3. MultiThreaded Sales Analytics Processor
 
-### 3. Inventory Management System
+A Java-based application that processes multiple sales CSV files concurrently and generates consolidated sales analytics and reports.
 
-A Java-based inventory management application for managing products, stock information, discounts and inventory reports.
+Features
 
-**Features:**
-- Product Management
-- Stock Management
-- Product Categories
-- Discount Calculation
-- Inventory Value Calculation
-- Inventory Reports
-- CSV Report Export
-- Exception Handling
-- Multithreaded Inventory Processing
-
-**Technologies & Concepts:**
-- Java
-- Object-Oriented Programming
-- Inheritance
-- Encapsulation
-- Abstraction
-- Interfaces
-- Polymorphism
-- Collections
-- Exception Handling
-- File I/O
-- Serialization
-- Multithreading
-- Maven
-
-**Project Folder:** `inventory-management-system`
-
----
-
-### 4. MultiThreaded Sales Analytics Processor
-
-A Java-based application that processes multiple CSV sales files concurrently and generates consolidated sales analytics.
-
-**Features:**
 - Concurrent processing of multiple CSV files
 - Automatic thread-pool configuration
 - Sales record validation
@@ -112,90 +67,97 @@ A Java-based application that processes multiple CSV sales files concurrently an
 - Product-wise sales analysis
 - Category-wise revenue analysis
 - Top-selling product identification
-- Top 3 product analysis
+- Top-three product analysis
 - Processing-time measurement
 - Consolidated text report generation
 - CSV analytics export
 - Graceful thread-pool management
 
-**Technologies & Concepts:**
-- Java
-- Object-Oriented Programming
-- Multithreading
-- ExecutorService
-- Callable
-- Future
-- Collections
-- File I/O
-- CSV Processing
-- Exception Handling
-- Builder Design Pattern
+Technologies: Java, Multithreading, ExecutorService, Callable, Future, Collections, File I/O, CSV Processing, Exception Handling, Builder Design Pattern
 
-**Project Folder:** `MultiThreaded_Sales_Analytics_Processor`
+Project Folder: "MultiThreaded_Sales_Analytics_Processor"
 
----
+4. Student Portfolio Website
 
-## Technologies Used
+A responsive five-page student portfolio website built using Java and Spring Boot, featuring a bright green-and-white design.
 
-| Technology | Usage |
-|------------|-------|
-| Java | Application development |
-| Java Swing | Desktop user interfaces |
-| Maven | Project management and build |
-| JUnit | Unit testing |
-| Collections | Data management |
-| File I/O | File operations |
-| CSV Processing | Data processing and analytics |
-| Multithreading | Concurrent processing |
-| ExecutorService | Thread management |
-| Spring IoC | Dependency Injection |
+Features
 
----
+- Home page
+- Creator profile page
+- Website overview page
+- Features page
+- Contact page
+- Responsive navigation
+- Mobile-friendly layout
+- Consistent styling and interactive UI elements
 
-## Repository Structure
+Technologies: Java, Spring Boot, Spring Web, HTML, CSS, JavaScript, Maven
 
-```text
+Project Folder: "StudentPortfolioWebsite"
+
+Technologies Used
+
+Technology| Purpose
+Java| Application development
+Java Swing| Desktop user interfaces
+Spring Boot| Web application development
+Spring Web| Serving web pages
+HTML5| Web page structure
+CSS3| Styling and responsive layouts
+JavaScript| Interactive web elements
+Maven| Build and dependency management
+Collections| Data management
+File I/O| File operations and storage
+CSV Processing| Data processing and analytics
+Multithreading| Concurrent task execution
+ExecutorService| Thread-pool management
+
+Repository Structure
+
 JavaFullStack-Mini-Projects/
 │
-├── CampusLostFoundInteractive/
-│   ├── data/
-│   ├── src/
-│   ├── pom.xml
-│   └── README.md
+├── MultiThreaded_Sales_Analytics_Processor/
+│
+├── StudentPortfolioWebsite/
 │
 ├── calculator-executable-jar/
-│   ├── src/
-│   ├── pom.xml
-│   └── README.md
 │
 ├── inventory-management-system/
-│   ├── src/
-│   ├── pom.xml
-│   └── README.md
-│
-├── MultiThreaded_Sales_Analytics_Processor/
-│   ├── data/
-│   ├── src/
-│   ├── README.md
-│   └── run.bat
 │
 └── README.md
-```
 
----
+Development Approach
 
-## Repository Purpose
+These projects demonstrate different application development approaches:
 
-This repository contains mini projects developed as part of the Java Full Stack course.
+- Desktop development: Creating graphical applications using Java Swing.
+- Object-oriented design: Applying encapsulation, abstraction, inheritance, interfaces, and polymorphism.
+- Inventory management: Managing products, categories, stock, and inventory reports.
+- File processing: Reading, validating, and exporting structured data.
+- Concurrent programming: Processing multiple files using Java concurrency utilities.
+- Web development: Building a multi-page website using Spring Boot and frontend technologies.
+- Modular programming: Organizing code into reusable classes and components.
 
-Each project is maintained in a separate folder and demonstrates different Java programming, Object-Oriented Programming, software development, data processing and application-building concepts.
+Learning Outcomes
 
-The projects cover areas including desktop application development, inventory management, file processing, data analytics, testing, dependency injection and concurrent programming.
+Through these projects, I have developed practical experience in:
 
----
+- Java programming and object-oriented design
+- GUI application development
+- File handling and data persistence
+- Collections and exception handling
+- Multithreading and concurrent programming
+- CSV processing and report generation
+- Spring Boot web application development
+- Maven-based project organization
 
-## Developer
+Purpose
 
-**Arnaov Garg**  
-B.Tech CSE Core  
+This repository showcases my practical programming experience and progress in building desktop, command-line, and web applications using Java and related technologies.
+
+Developer
+
+Arnaov Garg
+B.Tech — CSE Core D
 SRM Institute of Science and Technology
