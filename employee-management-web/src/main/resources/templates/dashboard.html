@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Employee Management System</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <a th:href="@{/dashboard}" class="nav-brand">
+            <div class="brand-icon">EMS</div>
+            <span>EmployeeHub</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a th:href="@{/dashboard}" class="nav-link active">Dashboard</a></li>
+            <li><a th:href="@{/employees}" class="nav-link">Employees</a></li>
+            <li><a th:href="@{/departments}" class="nav-link">Departments</a></li>
+        </ul>
+
+        <div class="nav-user">
+            <div class="user-badge">
+                <div class="user-avatar" th:text="${#strings.substring(username, 0, 1).toUpperCase()}">U</div>
+                <span th:text="${username}">User</span>
+                <span class="badge badge-admin" sec:authorize="hasRole('ADMIN')">ADMIN</span>
+                <span class="badge badge-user" sec:authorize="!hasRole('ADMIN')">USER</span>
+            </div>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn-logout">Sign Out</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="page-header">
+            <div>
+                <h1>Executive Dashboard</h1>
+                <p>Real-time organization metrics, department relationship tracking, and Spring JWT security.</p>
+            </div>
+            <div>
+                <a th:href="@{/employees/new}" class="btn btn-primary">+ Add New Employee</a>
+            </div>
+        </div>
+
+        <!-- Metric Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon indigo">👥</div>
+                <div class="stat-info">
+                    <div class="stat-label">Total Employees</div>
+                    <div class="stat-value" th:text="${totalEmployees}">0</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">🏢</div>
+                <div class="stat-info">
+                    <div class="stat-label">Total Departments</div>
+                    <div class="stat-value" th:text="${totalDepartments}">0</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">💵</div>
+                <div class="stat-info">
+                    <div class="stat-label">Monthly Payroll</div>
+                    <div class="stat-value" th:text="'$' + ${#numbers.formatDecimal(totalPayroll, 1, 'COMMA', 2, 'POINT')}">$0.00</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon amber">📈</div>
+                <div class="stat-info">
+                    <div class="stat-label">Average Salary</div>
+                    <div class="stat-value" th:text="'$' + ${#numbers.formatDecimal(averageSalary, 1, 'COMMA', 2, 'POINT')}">$0.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spring JWT Security Demonstration Card -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Spring Security &amp; JWT Token Demonstration</h3>
+                <span class="badge badge-admin">HMAC-SHA256 Signed</span>
+            </div>
+            <div class="card-body">
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                    Generated dynamically by <code>JwtService.java</code> for authenticated user
+                    <strong><span th:text="${username}">User</span></strong> with authority
+                    <strong><span th:text="${primaryRole}">ROLE</span></strong>:
+                </p>
+                <div class="jwt-box">
+                    <span class="jwt-tag">ACTIVE JSON WEB TOKEN</span><br>
+                    <span th:text="${jwtToken}">ey...</span>
+                </div>
+                <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-light);">
+                    💡 Verification endpoint also available at <code>/api/jwt/token</code> (returns JSON payload with parsed claims &amp; validity).
+                </p>
+            </div>
+        </div>
+
+        <!-- Two Column Layout: Recent Employees & Department Breakdown -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem;">
+            <!-- Recent Employees -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Recent Employees</h3>
+                    <a th:href="@{/employees}" style="font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600;">View All →</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="emp : ${recentEmployees}">
+                                <td>
+                                    <strong th:text="${emp.fullName}">Jane Doe</strong><br>
+                                    <small style="color: var(--text-light);" th:text="${emp.jobTitle}">Engineer</small>
+                                </td>
+                                <td th:text="${emp.departmentName != null ? emp.departmentName : 'Unassigned'}">Engineering</td>
+                                <td>
+                                    <span class="badge"
+                                          th:classappend="${emp.role.name() == 'ROLE_ADMIN' ? 'badge-admin' : (emp.role.name() == 'ROLE_MANAGER' ? 'badge-manager' : 'badge-user')}"
+                                          th:text="${emp.role.displayName}">Role</span>
+                                </td>
+                                <td>
+                                    <span class="badge"
+                                          th:classappend="${emp.status == 'Active' ? 'badge-active' : 'badge-leave'}"
+                                          th:text="${emp.status}">Active</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Department Directory -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Departments &amp; Headcount</h3>
+                    <a th:href="@{/departments}" style="font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600;">Manage Departments →</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Head of Dept</th>
+                                <th>Location</th>
+                                <th>Staff</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="dept : ${departments}">
+                                <td>
+                                    <strong th:text="${dept.name}">Engineering</strong>
+                                </td>
+                                <td th:text="${dept.headOfDepartment}">Alex Morgan</td>
+                                <td style="font-size: 0.85rem; color: var(--text-muted);" th:text="${dept.location}">Building A</td>
+                                <td>
+                                    <span class="badge badge-user" th:text="${departmentCounts.get(dept.id)} + ' members'">0 members</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        Employee Management Web Application • Built with Spring Boot, MVC, Security, JWT &amp; Thymeleaf • In-Memory ArrayList Storage
+    </footer>
+</body>
+</html>

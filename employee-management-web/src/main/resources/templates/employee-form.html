@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${isEdit ? 'Edit Employee' : 'New Employee'} + ' | Employee Management System'">Employee Form</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <a th:href="@{/dashboard}" class="nav-brand">
+            <div class="brand-icon">EMS</div>
+            <span>EmployeeHub</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a th:href="@{/dashboard}" class="nav-link">Dashboard</a></li>
+            <li><a th:href="@{/employees}" class="nav-link active">Employees</a></li>
+            <li><a th:href="@{/departments}" class="nav-link">Departments</a></li>
+        </ul>
+
+        <div class="nav-user">
+            <div class="user-badge">
+                <span sec:authentication="name">User</span>
+            </div>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn-logout">Sign Out</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="page-header">
+            <div>
+                <h1 th:text="${isEdit ? 'Edit Employee Record' : 'Register New Employee'}">Employee Form</h1>
+                <p>Ensure all required details and department relationships are correctly specified.</p>
+            </div>
+            <div>
+                <a th:href="@{/employees}" class="btn btn-secondary">← Back to List</a>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 800px; margin: 0 auto 3rem auto;">
+            <div class="card-header">
+                <h3 th:text="${isEdit ? 'Update Details for ' + employee.fullName : 'Enter Employee Information'}">Form</h3>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/employees/save}" th:object="${employee}" method="post">
+                    <!-- Hidden ID for Edit Mode -->
+                    <input type="hidden" th:field="*{id}" />
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" th:field="*{firstName}" class="form-control" placeholder="e.g. Arnaov" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" th:field="*{lastName}" class="form-control" placeholder="e.g. Garg" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Work Email *</label>
+                            <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="name@company.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" th:field="*{phone}" class="form-control" placeholder="+91-9876543210">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title / Designation *</label>
+                            <input type="text" id="jobTitle" th:field="*{jobTitle}" class="form-control" placeholder="e.g. Software Engineer" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="departmentId">Department (Relationship) *</label>
+                            <select id="departmentId" th:field="*{departmentId}" class="form-control" required>
+                                <option value="">-- Select Assigned Department --</option>
+                                <option th:each="dept : ${departments}"
+                                        th:value="${dept.id}"
+                                        th:text="${dept.name}">
+                                    Department
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salary">Annual Salary (USD / INR) *</label>
+                            <input type="number" id="salary" th:field="*{salary}" step="0.01" class="form-control" placeholder="e.g. 75000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Security Role *</label>
+                            <select id="role" th:field="*{role}" class="form-control" required>
+                                <option th:each="r : ${roles}"
+                                        th:value="${r}"
+                                        th:text="${r.displayName}">
+                                    Role
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Employment Status</label>
+                            <select id="status" th:field="*{status}" class="form-control">
+                                <option value="Active">Active</option>
+                                <option value="On Leave">On Leave</option>
+                                <option value="Probationary">Probationary</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <a th:href="@{/employees}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            <span th:text="${isEdit ? 'Update Employee' : 'Save Employee'}">Save Employee</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        Employee Management Web Application • Built with Spring Boot, MVC, Security, JWT &amp; Thymeleaf • In-Memory ArrayList Storage
+    </footer>
+</body>
+</html>
