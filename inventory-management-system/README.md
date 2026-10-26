@@ -206,9 +206,7 @@ MAIN MENU
 |-------------------|---------------------------------|
 | Project Title      | Inventory Management System    |
 | Language           | Java                            |
-| Institution        | *(fill in college name)*        |
-| Course             | *(fill in course name)*         |
-| Student Name       | *(fill in your name)*           |
-| Roll No. / Reg No. | *(fill in)*                     |
-| Submitted To       | *(fill in faculty name)*        |
-| Date               | *(fill in submission date)*     |
+| Institution        | SRMIST                          |
+| Course             | Java Full Stack                 |
+| Student Name       | Arnaov Garg                     |
+| Roll No. / Reg No. | RA2411003030227                 |
