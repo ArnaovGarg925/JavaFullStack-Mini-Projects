@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Hospital Appointment System</h1>
+    <p><b>Hospital Management Dashboard</b></p>
+    <div class="summary-grid">
+        <div class="summary-card"><span>Departments</span><strong th:text="${departmentCount}">0</strong></div>
+        <div class="summary-card"><span>Doctors</span><strong th:text="${doctorCount}">0</strong></div>
+        <div class="summary-card"><span>Patients</span><strong th:text="${patientCount}">0</strong></div>
+        <div class="summary-card"><span>Appointments</span><strong th:text="${appointmentCount}">0</strong></div>
+    </div>
+
+    <div class="menu">
+
+        <a href="/departments" class="card">
+            <h2>Departments</h2>
+            <p>Add and view departments</p>
+        </a>
+
+        <a href="/doctors" class="card">
+            <h2>Doctors</h2>
+            <p>Register and view doctors</p>
+        </a>
+
+        <a href="/patients" class="card">
+            <h2>Patients</h2>
+            <p>Register and view patients</p>
+        </a>
+
+        <a href="/appointments" class="card">
+            <h2>Appointments</h2>
+            <p>Book, track and cancel appointments</p>
+        </a>
+
+    </div>
+
+<p class="dashboard-note">Care coordination made simpler · Hospital Administration Portal</p>
+</div>
+
+</body>
+</html>
